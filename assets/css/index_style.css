@@ -1,0 +1,58 @@
+label {
+	display:block;
+}
+p {
+	margin: 20px 0 5px 0;
+}
+textarea[name=comment] {
+	resize:none;
+	height: 35px;
+}
+.span1{
+	border:1px solid black;
+	padding: 20px;
+	margin: 20px 0;
+}
+.btn-primary {
+	margin-top: 20px;
+}
+.error {
+	color:red;
+}
+.navbar {
+	padding: 0 7%;
+}
+.spanBorder {
+	border:1px solid black;
+	padding: 10px;
+}
+.comment {
+	border:1px solid black;
+	border-radius: 0; !important
+	margin: 10px 0 0 0;
+}
+.comment_form_wrapper {
+	margin: 10px 0;
+}
+#content_wrapper {
+	width: 85%;
+	margin: 0 auto;
+}
+#description, #message {
+	resize:none;
+	height: 75px;
+}
+#edit_info_header, #change_pw_header, #edit_desc_header {
+	margin: -30px 0 30px 0;
+	background-color:white;
+	padding: 0 10px;
+}
+#edit_info_header {
+	width: 130px;
+}
+#change_pw_header {
+	width: 140px;
+}
+#edit_desc_header {
+	width: 130px;
+}
