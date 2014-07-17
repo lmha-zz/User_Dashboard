@@ -128,8 +128,8 @@ function check_time($diff) {
 					</div>
 				</div>
 				<?php
-				if(count($user_msg_comments["{$message['msgId']}"]) > 0 && (!empty($user_msg_comments["{$message['msgId']}"][0]))) {
-					$comments = $user_msg_comments["{$message['msgId']}"];
+				if(count($user_msg_comments["{$message['msgId']}"]) > 0 && (!empty($user_msg_comments["{$message['msgId']}"][0][0]))) {
+					$comments = $user_msg_comments["{$message['msgId']}"][0];
 					foreach ($comments as $index => $comment) {
 						?>
 							<div class="row">

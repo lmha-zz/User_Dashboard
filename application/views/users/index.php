@@ -17,7 +17,7 @@ ini_set('date.timezone', 'America/Los_Angeles');
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a href="/users" class="navbar-brand">Test App</a>
+				<a href="/users" class="navbar-brand">CodingDojoBook App</a>
 			</div>
 			<div class="navbar-collapse">
 				<ul class="nav navbar-nav">
@@ -34,25 +34,25 @@ ini_set('date.timezone', 'America/Los_Angeles');
 		<div class="container">
 			<div class="row">
 				<div class="jumbotron col-sm-12">
-					<h1>Welcome to the Test</h1>
-					<p>We're going to build a cool application using a MVC framework!  This application was built with the Village88 folks!</p>
+					<h1>Welcome to CodingDojoBook!</h1>
+					<p>This project was built with CodeIgniter, an MVC framework, and a MySQL database.  All grunt-work and stress credited to me, Lisa M. Ha.</p>
 					<p>
-						<a class="btn btn-primary btn-large" href="/users/signin">Start</a>
+						<a class="btn btn-primary btn-large" href="/users/register">Start by Registering!</a>
 					</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-4">
 					<h3>Manage Users</h3>
-					<p>Using this application, you'll learn how to add, remove, and edit users for the application.</p>
+					<p>Admin functionality included in this project.  Admins have the power to add, remove, or edit users!</p>
 				</div>
 				<div class="col-md-4">
 					<h3>Leave Messages</h3>
-					<p>Users will be able to leave a message to another user using this application.</p>
+					<p>Users have the ability to view other users' profiles and leave messages/comments on their walls.</p>
 				</div>
 				<div class="col-md-4">
 					<h3>Edit User Information</h3>
-					<p>Admins will be able to edit another user's information (email addres, first name, last name, etc).</p>
+					<p>Admins have the power to edit any users' information (email address, first name, last name, etc). Normal users have the power to edit their own information.</p>
 				</div>
 			</div>
 		</div>

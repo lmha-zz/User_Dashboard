@@ -81,7 +81,12 @@ class Users extends CI_Controller {
 			redirect($failURL);
 		} else {
 			$this->load->model('user');
-			$reg_status = $this->user->create_user($this->input->post());
+			$totalUsers = $this->user->count_users();
+			if(count($totalUsers) > 0) {
+				$reg_status = $this->user->create_user($this->input->post(), 'normal');
+			} else {
+				$reg_status = $this->user->create_user($this->input->post(), 'admin');
+			}
 			if($reg_status) {
 				$user = $this->user->read_user(null, $this->input->post('email'));
 				if($this->input->post('register')) {

@@ -2,14 +2,19 @@
 
 class User extends CI_Model {
 
-	public function create_user($post) {
+	public function create_user($post, $user_level) {
 		$query = "INSERT INTO users (first_name, last_name, email, password, user_level, created_at, updated_at) VALUES (?, ?, ?, ?, ?, NOW(), NOW())";
 		$data = array('first_name' => $post['first_name'],
 					  'last_name' => $post['last_name'],
 					  'email' => $post['email'],
 					  'password' => md5($post['password']),
-					  'user_level' => 'normal');
+					  'user_level' => $user_level);
 		return $this->db->query($query, $data);
+	}
+
+	public function count_users() {
+		$query = "SELECT id FROM users";
+		return $this->db->query($query)->result_array();
 	}
 
 	public function read_users() {
