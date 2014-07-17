@@ -57,6 +57,35 @@ ini_set('date.timezone', 'America/Los_Angeles');
 					<a href="/users/new_user" class="btn btn-primary pull-right">Add new</a>
 				</div>
 			</div>
+			<?php
+			if($this->session->flashdata('new_user')) {
+				?>
+				<div class="row">
+					<div class="col-sm-5">
+						<?= $this->session->flashdata('new_user') ?>
+					</div>
+				</div>
+				<?php
+			}
+			if($this->session->flashdata('delete_user_success')) {
+				?>
+				<div class="row">
+					<div class="col-sm-5">
+						<?= $this->session->flashdata('delete_user_success') ?>
+					</div>
+				</div>
+				<?php
+			}
+			if($this->session->flashdata('delete_user_error')) {
+				?>
+				<div class="row">
+					<div class="col-sm-5">
+						<?= $this->session->flashdata('delete_user_error') ?>
+					</div>
+				</div>
+				<?php
+			}
+			?>
 			<div class="row">
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
@@ -106,8 +135,11 @@ ini_set('date.timezone', 'America/Los_Angeles');
 									<p>Are you sure you want to remove the user <?= ucwords($user['first_name'].' '.$user['last_name']) ?> registered with the email: '<?= $user['email'] ?>'?</p>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-									<a class="btn btn-success" href="/users/delete/<?= $user['id'] ?>">Yes, Delete</a>
+									<form action="/users/delete/<?= $user['id'] ?>" method="post">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+										<input type="hidden" name="name" value="<?= ucwords($user['first_name'].' '.$user['last_name']) ?>">
+										<input class="btn btn-success" type="submit" name="delete_user" value="Yes, Delete">
+									</form>
 								</div>
 							</div>
 						</div>

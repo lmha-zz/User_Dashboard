@@ -53,8 +53,19 @@ if(!$this->session->userdata('loggedIn') || $this->session->userdata('user_level
 					<a class="btn btn-primary pull-right" href="/dashboards/admin">Return to Dashboard</a>
 				</div>
 			</div>
+			<?php
+			if($this->session->flashdata('register_errors')) {
+				?>
+				<div class="row">
+					<div class="col-sm-5">
+						<?= $this->session->flashdata('register_errors') ?>
+					</div>
+				</div>
+				<?php
+			}
+			?>
 			<div class="row">
-				<form class="form-horizontal" role="form" action="/users/process" method="post">
+				<form class="form-horizontal" role="form" action="/users/process_new_user" method="post">
 					<div class="form-group col-sm-12">
 						<div class="col-sm-5">
 							<label for="email">Email Address:

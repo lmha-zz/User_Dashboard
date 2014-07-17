@@ -1,8 +1,4 @@
 <?php
-if(!$this->session->userdata('loggedIn')) {
-	$this->session->set_flashdata('login_errors', "<p class='error'>Please log in.</p>");
-	redirect('/users/signin');
-}
 
 ini_set('date.timezone', 'America/Los_Angeles');
 
@@ -10,14 +6,17 @@ function check_time($diff) {
 	if ($diff < 3600) {
 		$timeStamp = floor($diff/60)." minutes ago";
 	} elseif ($diff >= 3600 && $diff < 86400) {
-		if(($diff/60/60) < 7200) {
+		if($diff < 7200) {
 			$timeStamp = floor($diff/60/60)." hour ago";
 		} else {
 			$timeStamp = floor($diff/60/60)." hours ago";
 		}
 	} elseif ((time()-strtotime($message['created_at'])) >= 86400) {
-		//wow been posted more than a day ago :O
-		$timeStamp = "many days ago.";
+		if($diff < 172800) {
+			$timeStamp = floor($diff/60/60/24)." day ago";
+		} else {
+			$timeStamp = floor($diff/60/60/24)." days ago";
+		}
 	}
 	return $timeStamp;
 }
@@ -129,7 +128,8 @@ function check_time($diff) {
 					</div>
 				</div>
 				<?php
-					$comments = $this->comment->read_comments(intval($message['msgId']));
+				if(count($user_msg_comments["{$message['msgId']}"]) > 0 && (!empty($user_msg_comments["{$message['msgId']}"][0]))) {
+					$comments = $user_msg_comments["{$message['msgId']}"];
 					foreach ($comments as $index => $comment) {
 						?>
 							<div class="row">
@@ -152,6 +152,7 @@ function check_time($diff) {
 							</div>
 						<?php
 					}
+				}
 				?>
 				<div class="row">
 					<div class="col-sm-11 col-sm-offset-1">

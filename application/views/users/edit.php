@@ -1,10 +1,8 @@
 <?php
-if(!$this->session->userdata('loggedIn')) {
-	$this->session->set_flashdata('login_errors', "<p class='error'>Please log in.</p>");
-	redirect('/users/signin');
-}
 
 ini_set('date.timezone', 'America/Los_Angeles');
+
+var_dump($this->session->userdata);
 
 ?>
 
@@ -62,27 +60,62 @@ ini_set('date.timezone', 'America/Los_Angeles');
 				?>
 			</div>
 			<div class="row">
-				<div class="col-sm-6 span1">
+				<?php
+					if($this->session->flashdata('edit_success')) {
+						?>
+						<div class="col-sm-6">
+							<?= $this->session->flashdata('edit_success') ?>
+						</div>
+						<?php
+					}
+					if($this->session->flashdata('edit_errors')) {
+						?>
+						<div class="col-sm-6">
+							<?= $this->session->flashdata('edit_errors') ?>
+						</div>
+						<?php
+					}
+				?>
+				<?php
+					if($this->session->flashdata('edit_pw_errors')) {
+						?>
+						<div class="col-sm-6 twoColumns pull-right">
+							<?= $this->session->flashdata('edit_pw_errors') ?>
+						</div>
+						<?php
+					}
+					if($this->session->flashdata('edit_pw_success')) {
+						?>
+						<div class="col-sm-6 twoColumns pull-right">
+							<?= $this->session->flashdata('edit_pw_success') ?>
+						</div>
+						<?php
+					}
+				?>	
+			</div>
+			<div class="row">
+				<div class="col-sm-6 span1 twoColumns">
 					<h5 id="edit_info_header">Edit Information</h5>
-					<form class="form-horizontal" role="form" action="/users/process" method="post">
+					<form class="form-horizontal" role="form" action="/users/process_edit_user_info" method="post">
 						<div class="form-group">
 							<div class="col-sm-12">
+								<input type="hidden" name="user_id_editting" value="<?= $id ?>">
 								<label for="email">Email Address:
-									<input class="form-control" type="email" id="email" name="email" placeholder="<?= $email ?>">
+									<input class="form-control" type="text" id="email" name="email" value="<?= $email ?>">
 								</label>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-12">
 								<label for="first_name">First Name:
-									<input class="form-control" type="text" id="first_name" name="first_name" placeholder="<?= $first_name ?>">
+									<input class="form-control" type="text" id="first_name" name="first_name" value="<?= $first_name ?>">
 								</label>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-12">
 								<label for="last_name">Last Name:
-									<input class="form-control" type="text" id="last_name" name="last_name" placeholder="<?= $last_name ?>">
+									<input class="form-control" type="text" id="last_name" name="last_name" value="<?= $last_name ?>">
 								</label>
 							</div>
 						</div>
@@ -109,21 +142,22 @@ ini_set('date.timezone', 'America/Los_Angeles');
 									</label>
 								</div>
 							</div>
+							<?php
+						}
+						?>
 						<div class="form-group">
 							<div class="col-sm-4 pull-right">
 								<input class="form-control btn btn-success" type="submit" name="update_user" value="Save">
 							</div>
 						</div>
-							<?php
-						}
-						?>
 					</form>
 				</div>
-				<div class="col-sm-6 span1 pull-right">
+				<div class="col-sm-6 span1 pull-right twoColumns">
 					<h5 id="change_pw_header">Change Password</h5>
-					<form class="form-horizontal" role="form" action="/users/process" method="post">
+					<form class="form-horizontal" role="form" action="/users/process_edit_user_pw" method="post">
 						<div class="form-group">
 							<div class="col-sm-12">
+								<input type="hidden" name="user_id_editting" value="<?= $id ?>">
 								<label for="password">Password:
 									<input class="form-control col-sm-12" type="password" id="password" name="password" placeholder="Enter Password">
 								</label>
@@ -144,15 +178,33 @@ ini_set('date.timezone', 'America/Los_Angeles');
 					</form>
 				</div>
 			</div>
-
+			<div class="row">
+				<?php
+					if($this->session->flashdata('edit_desc_errors')) {
+						?>
+						<div class="col-sm-6">
+							<?= $this->session->flashdata('edit_desc_errors') ?>
+						</div>
+						<?php
+					}
+					if($this->session->flashdata('edit_desc_success')) {
+						?>
+						<div class="col-sm-6">
+							<?= $this->session->flashdata('edit_desc_success') ?>
+						</div>
+						<?php
+					}
+				?>
+			</div>
 			<div class="row">
 				<div class="col-sm-12 span1">
 					<h5 id="edit_desc_header">Edit Description</h5>
-					<form class="form-horizontal" role="form" action="/users/process" method="post">
+					<form class="form-horizontal" role="form" action="/users/process_user_description" method="post">
 						<div class="form-horizontal">
 							<div class="form-group">
 								<div class="col-sm-12">
-									<textarea class="form-control" id="description" name="description"></textarea>
+									<input type="hidden" name="user_id_editting" value="<?= $id ?>">
+									<textarea class="form-control" id="description" name="description"><?= $description ?></textarea>
 								</div>
 							</div>
 							<div class="form-group">

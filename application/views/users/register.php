@@ -27,17 +27,34 @@
 
 	<div id="content_wrapper">
 		<div class="container">
+			<?php
+			if($this->session->flashdata('delete_user_success')) {
+				?>
+				<div class="row">
+					<div class="col-sm-12">
+						<?= $this->session->flashdata('delete_user_success') ?>
+					</div>
+				</div>
+				<?php
+			}
+			?>
 			<div class="row">
 				<div class="col-sm-5">
 					<h1>Register: </h1>
 				</div>
 			</div>
-			<div class="row">
-				<?php
-				if($this->session->flashdata('register_errors')) {
-					echo $this->session->flashdata('register_errors');
-				}
+			<?php
+			if($this->session->flashdata('register_errors')) {
 				?>
+				<div class="row">
+					<div class="col-sm-5">
+						<?= $this->session->flashdata('register_errors') ?>
+					</div>
+				</div>
+				<?php
+			}
+			?>
+			<div class="row">
 				<form class="form-horizontal" role="form" action="/users/process_new_user" method="post">
 					<div class="form-group col-sm-12">
 						<div class="col-sm-5">
@@ -88,6 +105,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 
 </body>
 </html>

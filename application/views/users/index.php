@@ -1,4 +1,5 @@
 <?php
+
 ini_set('date.timezone', 'America/Los_Angeles');
 
 ?>
@@ -14,13 +15,13 @@ ini_set('date.timezone', 'America/Los_Angeles');
 <body>
 
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
-		<div class="container">
+		<div class="container-fluid">
 			<div class="navbar-header">
 				<a href="/users" class="navbar-brand">Test App</a>
 			</div>
 			<div class="navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
+					<li class="active"><a href="/users">Home</a></li>
 				</ul>
 				<ul class="nav navbar-nav pull-right">
 					<li><a href="/users/signin">Sign In</a></li>

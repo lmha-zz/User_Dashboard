@@ -9,7 +9,7 @@
 <body>
 	
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
-		<div class="container">
+		<div class="container-fluid">
 			<div class="navbar-header">
 				<a href="/users" class="navbar-brand">Test App</a>
 			</div>
@@ -31,11 +31,17 @@
 				<div class="col-sm-5">
 					<h1>Signin: </h1>
 				</div>
-				<?php
-				if($this->session->flashdata('login_errors')) {
-					echo $this->session->flashdata('login_errors');
-				}
-				?>
+			</div>
+			<div class="row">
+				<div class="col-sm-5">
+					<?php
+					if($this->session->flashdata('login_errors')) {
+						echo $this->session->flashdata('login_errors');
+					}
+					?>
+				</div>
+			</div>
+			<div class="row">
 				<form class="form-horizontal" role="form" action="/users/process_login" method="post">
 					<div class="form-group col-sm-12">
 						<div class="col-sm-5">
@@ -65,5 +71,6 @@
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>

@@ -13,11 +13,17 @@ textarea[name=comment] {
 	padding: 20px;
 	margin: 20px 0;
 }
+.twoColumns {
+	width: 48%;
+}
 .btn-primary {
 	margin-top: 20px;
 }
 .error {
 	color:red;
+}
+.success {
+	color:green;
 }
 .navbar {
 	padding: 0 7%;
