@@ -2,8 +2,6 @@
 
 ini_set('date.timezone', 'America/Los_Angeles');
 
-var_dump($this->session->userdata);
-
 ?>
 
 <!DOCTYPE html>

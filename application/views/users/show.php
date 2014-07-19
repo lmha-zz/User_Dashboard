@@ -2,7 +2,7 @@
 
 ini_set('date.timezone', 'America/Los_Angeles');
 
-function check_time($diff) {
+function check_time($diff, $type) {
 	if ($diff < 3600) {
 		$timeStamp = floor($diff/60)." minutes ago";
 	} elseif ($diff >= 3600 && $diff < 86400) {
@@ -11,7 +11,7 @@ function check_time($diff) {
 		} else {
 			$timeStamp = floor($diff/60/60)." hours ago";
 		}
-	} elseif ((time()-strtotime($message['created_at'])) >= 86400) {
+	} elseif ((time()-strtotime($type['created_at'])) >= 86400) {
 		if($diff < 172800) {
 			$timeStamp = floor($diff/60/60/24)." day ago";
 		} else {
@@ -115,7 +115,7 @@ function check_time($diff) {
 					</div>
 					<div class="col-sm-6">
 						<?php
-						$timeStamp = check_time(time()-strtotime($message['created_at']));
+						$timeStamp = check_time(time()-strtotime($message['created_at']), $message);
 						?>
 						<p class="pull-right"><?= ($timeStamp) ?></p>
 					</div>
@@ -138,7 +138,7 @@ function check_time($diff) {
 								</div>
 								<div class="col-sm-5">
 									<?php
-									$timeStamp = check_time(time()-strtotime($comment['created_at']));
+									$timeStamp = check_time(time()-strtotime($comment['created_at']), $comment);
 									?>
 									<p class="pull-right"><?= ($timeStamp) ?></p>
 								</div>
