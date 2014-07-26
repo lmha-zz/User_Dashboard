@@ -17,7 +17,17 @@ ini_set('date.timezone', 'America/Los_Angeles');
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a href="/users" class="navbar-brand">Test App</a>
+				<?php
+				if($this->session->userdata('user_level') == "admin") {
+					?>
+					<a href="/dashboards/admin" class="navbar-brand">Test App</a>
+					<?php
+				} else {
+					?>
+					<a href="/dashboards" class="navbar-brand">Test App</a>
+					<?php
+				}
+				?>
 			</div>
 			<div class="navbar-collapse">
 				<ul class="nav navbar-nav">

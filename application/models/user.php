@@ -8,7 +8,7 @@ class User extends CI_Model {
 					  'last_name' => $post['last_name'],
 					  'email' => $post['email'],
 					  'password' => md5($post['password']),
-					  'user_level' => $user_level);
+					  'user_level' => 'normal');
 		return $this->db->query($query, $data);
 	}
 
